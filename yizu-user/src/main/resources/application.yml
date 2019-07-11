@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: yizu-user
+server:
+  port: 9001
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/yizu?characterEncoding=UTF8
+    username: root
+    password: root
