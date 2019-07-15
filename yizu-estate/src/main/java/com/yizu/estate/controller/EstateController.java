@@ -1,7 +1,8 @@
-package com.yizu.user.controller;
+package com.yizu.estate.controller;
 import java.util.List;
 import java.util.Map;
 
+import com.yizu.common.entity.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,24 +12,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.yizu.user.entity.User;
-import com.yizu.user.service.UserService;
+import com.yizu.estate.entity.Estate;
+import com.yizu.estate.service.EstateService;
 
 import com.yizu.common.entity.PageResult;
 import com.yizu.common.entity.Result;
 import com.yizu.common.entity.StatusCode;
 /**
- * user控制器层
+ * estate控制器层
  * @author Administrator
  *
  */
 @RestController
 @CrossOrigin
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/estate")
+public class EstateController {
 
 	@Autowired
-	private UserService userService;
+	private EstateService estateService;
 	
 	
 	/**
@@ -37,7 +38,7 @@ public class UserController {
 	 */
 	@RequestMapping(method= RequestMethod.GET)
 	public Result findAll(){
-		return new Result(true,StatusCode.OK,"查询成功",userService.findAll());
+		return new Result(true,StatusCode.OK,"查询成功",estateService.findAll());
 	}
 	
 	/**
@@ -47,11 +48,11 @@ public class UserController {
 	 */
 	@RequestMapping(value="/{id}",method= RequestMethod.GET)
 	public Result findById(@PathVariable Long id){
-		User user= userService.findById(id);
-		if(user==null){
+		Estate estate= estateService.findById(id);
+		if(estate==null){
 			return new Result(false, StatusCode.ERROR, "无数据");
 		}
-		return new Result(true,StatusCode.OK,"查询成功",user);
+		return new Result(true,StatusCode.OK,"查询成功",estate);
 	}
 
 
@@ -64,8 +65,8 @@ public class UserController {
 	 */
 	@RequestMapping(value="/search/{page}/{size}",method=RequestMethod.POST)
 	public Result findSearch(@RequestBody Map searchMap , @PathVariable int page, @PathVariable int size){
-		Page<User> pageList = userService.findSearch(searchMap, page, size);
-		return  new Result(true,StatusCode.OK,"查询成功",  new PageResult<User>(pageList.getTotalElements(), pageList.getContent()) );
+		Page<Estate> pageList = estateService.findSearch(searchMap, page, size);
+		return  new Result(true,StatusCode.OK,"查询成功",  new PageResult<Estate>(pageList.getTotalElements(), pageList.getContent()) );
 	}
 
 	/**
@@ -75,26 +76,26 @@ public class UserController {
      */
     @RequestMapping(value="/search",method = RequestMethod.POST)
     public Result findSearch( @RequestBody Map searchMap){
-        return new Result(true,StatusCode.OK,"查询成功",userService.findSearch(searchMap));
+        return new Result(true,StatusCode.OK,"查询成功",estateService.findSearch(searchMap));
     }
 	
 	/**
 	 * 增加
-	 * @param user
+	 * @param estate
 	 */
 	@RequestMapping(method=RequestMethod.POST)
-	public Result add(@RequestBody User user  ){
-		userService.add(user);
+	public Result add(@RequestBody Estate estate  ){
+		estateService.add(estate);
 		return new Result(true,StatusCode.OK,"增加成功");
 	}
 	
 	/**
 	 * 修改
-	 * @param user
+	 * @param estate
 	 */
-	@RequestMapping(method= RequestMethod.PUT)
-	public Result update(@RequestBody User user){
-		userService.update(user);
+	@RequestMapping(value="/update",method= RequestMethod.PUT)
+	public Result update(@RequestBody Estate estate){
+		estateService.update(estate);
 		return new Result(true,StatusCode.OK,"修改成功");
 	}
 	
@@ -104,7 +105,7 @@ public class UserController {
 	 */
 	@RequestMapping(value="/{id}",method= RequestMethod.DELETE)
 	public Result delete(@PathVariable Long id){
-		userService.deleteById(id);
+		estateService.deleteById(id);
 		return new Result(true,StatusCode.OK,"删除成功");
 	}
 	

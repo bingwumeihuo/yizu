@@ -1,8 +1,8 @@
 server:
-  port: 9001
+  port: 9002
 spring:
   application:
-    name: yougou-user #指定服务名
+    name: yougou-estate #指定服务名
   datasource:
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/yizu?characterEncoding=UTF8
@@ -15,6 +15,6 @@ spring:
 #    host: 106.13.49.215
 #  rabbitmq:
 #    host: 106.13.49.215
-jwt:
-  config:
-    key: yizu
+#jwt:
+#  config:
+#    key: yizu
