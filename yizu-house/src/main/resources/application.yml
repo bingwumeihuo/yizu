@@ -1,0 +1,20 @@
+server:
+  port: 9003
+spring:
+  application:
+    name: yougou-house #指定服务名
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/yizu?characterEncoding=UTF8
+    username: root
+    password: root
+  jpa:
+    database: MySQL
+    show-sql: true
+#  redis:
+#    host: 106.13.49.215
+#  rabbitmq:
+#    host: 106.13.49.215
+#jwt:
+#  config:
+#    key: yizu

@@ -12,6 +12,7 @@
         <module>yizu-common</module>
         <module>yizu-user</module>
         <module>yizu-estate</module>
+        <module>yizu-house</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
