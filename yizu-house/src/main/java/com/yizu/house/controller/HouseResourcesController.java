@@ -4,7 +4,6 @@ import java.util.Map;
 
 import com.yizu.house.entity.PicUploadResult;
 import com.yizu.house.service.PicUploadFileSystemService;
-import com.yizu.house.vo.TableResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -31,14 +30,14 @@ public class HouseResourcesController {
 	private HouseResourcesService houseResourcesService;
 	
 	
-	/**
-	 * 查询全部数据
-	 * @return
-	 */
-	@RequestMapping(method= RequestMethod.GET)
-	public Result findAll(){
-		return new Result(true,StatusCode.OK,"查询成功", houseResourcesService.findAll());
-	}
+//	/**
+//	 * 查询全部数据
+//	 * @return
+//	 */
+//	@RequestMapping(method= RequestMethod.GET)
+//	public Result findAll(){
+//		return new Result(true,StatusCode.OK,"查询成功", houseResourcesService.findAll());
+//	}
 
 	
 	/**
@@ -66,11 +65,6 @@ public class HouseResourcesController {
 //		return ResponseEntity.ok(this.houseResourcesService.findSearch(houseResources,currentPage,pageSize));
 //	}
 
-
-
-
-
-
 	/**
 	 * 分页+多条件查询
 	 * @param searchMap 查询条件封装
@@ -78,22 +72,15 @@ public class HouseResourcesController {
 	 * @param size 页大小
 	 * @return 分页结果
 	 */
-	@RequestMapping(value="/search/{page}/{size}",method=RequestMethod.GET)
-	public Result findSearch(@RequestBody Map searchMap , @PathVariable int page, @PathVariable int size){
-		Page<HouseResources> pageList = houseResourcesService.findSearch(searchMap, page, size);
-		return  new Result(true,StatusCode.OK,"查询成功",  new PageResult<HouseResources>(pageList.getTotalElements(), pageList.getContent()) );
-	}
+ @ResponseBody
+ @RequestMapping(method=RequestMethod.GET)
+ public Result findSearch( Map searchMap , @RequestParam(name = "page",
+       defaultValue = "1") Integer page, @RequestParam(name = "size",
+       defaultValue = "10") Integer size){
 
-
-
-	//  @ResponseBody
-// @RequestMapping(method=RequestMethod.GET)
-// public Result findSearch( Map searchMap , @RequestParam(name = "currentPage",
-//       defaultValue = "1") Integer currentPage, @RequestParam(name = "pageSize",
-//       defaultValue = "10") Integer pageSize){
-//    Page<HouseResources> pageList = houseResourcesService.findSearch(searchMap, currentPage, pageSize);
-//    return  new Result(true,StatusCode.OK,"查询成功",  new PageResult<HouseResources>(pageList.getTotalElements(), pageList.getContent()) );
-// }
+    Page<HouseResources> pageList = houseResourcesService.findSearch(searchMap, page, size);
+    return  new Result(true,StatusCode.OK,"查询成功",  new PageResult<HouseResources>(pageList.getTotalElements(), pageList.getContent()) );
+ }
 	/**
      * 根据条件查询
      * @param searchMap

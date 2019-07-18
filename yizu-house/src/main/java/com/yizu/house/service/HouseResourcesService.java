@@ -9,21 +9,16 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.persistence.criteria.Selection;
 
-import com.yizu.house.vo.Pagination;
 import com.yizu.common.util.IdWorker;
 import com.yizu.house.entity.HouseResources;
-import com.yizu.house.vo.TableResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import com.yizu.common.util.IdWorker;
 
 import com.yizu.house.dao.HouseResourcesDao;
-import com.yizu.house.entity.HouseResources;
 
 /**
  * houseResources服务层
@@ -93,7 +88,6 @@ public class HouseResourcesService {
 	 */
 	public void add(HouseResources houseResources) {
 
-//		houseResources.setId(idWorker.nextId()+"");
 		houseResources.setCreated(new Date());
 		houseResources.setUpdated(new Date());
 		houseResourcesDao.save(houseResources);
