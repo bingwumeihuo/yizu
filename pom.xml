@@ -13,6 +13,8 @@
         <module>yizu-user</module>
         <module>yizu-estate</module>
         <module>yizu-house</module>
+        <module>yizu-websocket</module>
+        <module>yizu-im</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

@@ -28,8 +28,7 @@ public class HouseResourcesController {
 	private PicUploadFileSystemService picUploadService;
 	@Autowired
 	private HouseResourcesService houseResourcesService;
-	
-	
+
 //	/**
 //	 * 查询全部数据
 //	 * @return
@@ -39,7 +38,6 @@ public class HouseResourcesController {
 //		return new Result(true,StatusCode.OK,"查询成功", houseResourcesService.findAll());
 //	}
 
-	
 	/**
 	 * 根据ID查询
 	 * @param id ID
