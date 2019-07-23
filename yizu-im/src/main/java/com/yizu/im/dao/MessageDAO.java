@@ -1,23 +1,24 @@
 package com.yizu.im.dao;
 
-import com.mongodb.bulk.UpdateRequest;
+import com.yizu.im.entity.Message;
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
-import com.yizu.im.entity.Message;
 import org.bson.types.ObjectId;
 
 import java.util.List;
 
-/**
- * @Package: com.yizu.im.dao
- * @ClassName: MessageDAO
- * @Description: Java类作用
- * @Author: 式神
- * @CreateDate: 2019/7/23 1:16
- */
 public interface MessageDAO {
-    List<Message> findListByFromAndTo(Long fromId, Long toId, Integer page, Integer
-            rows);
+
+    /**
+     * 查询点对点聊天记录
+     *
+     * @param fromId
+     * @param toId
+     * @param page
+     * @param rows
+     * @return
+     */
+    List<Message> findListByFromAndTo(Long fromId, Long toId, Integer page, Integer rows);
 
     /**
      * 根据id查询数据
@@ -51,4 +52,5 @@ public interface MessageDAO {
      * @return
      */
     DeleteResult deleteMessage(String id);
+
 }

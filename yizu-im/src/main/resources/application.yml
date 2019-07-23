@@ -1,0 +1,18 @@
+server:
+  port: 9004
+spring:
+  application:
+    name: yougou-im #指定服务名
+#  datasource:
+#    driverClassName: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://127.0.0.1:3306/yizu?characterEncoding=UTF8
+#    username: root
+#    password: root
+  data:
+    mongodb:
+      uri: mongodb://106.13.49.215:27017/testdb
+#  redis:
+#    host: 106.13.49.215
+#  rabbitmq:
+#    host: 106.13.49.215
+
